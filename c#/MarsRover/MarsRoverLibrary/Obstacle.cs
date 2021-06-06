@@ -1,6 +1,8 @@
-﻿namespace MarsRover
+﻿using System;
+
+namespace MarsRover
 {
-    internal class Obstacle
+    public class Obstacle
     {
         private Coords obstacleCoords;
 
@@ -9,6 +11,9 @@
             this.obstacleCoords = obstacleCoords;
         }
 
-
+        public bool Matches(Coords checkCoords)
+        {
+            return checkCoords.X == obstacleCoords.X && checkCoords.Y == obstacleCoords.Y;
+        }
     }
 }

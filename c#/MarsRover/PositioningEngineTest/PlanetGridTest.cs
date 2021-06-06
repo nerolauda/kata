@@ -121,18 +121,42 @@ namespace PositioningEngineTest
         }
 
         [Test]
-        public void WhenObstacleIsNotAtCoordsCheckObstacleReturnFalse()
+        [TestCase(0, 0)]
+        [TestCase(8, 11)]
+        [TestCase(9, 11)]
+        [TestCase(8, 13)]
+        [TestCase(9, 12)]
+        public void WhenObstacleIsNotAtCoordsCheckObstacleReturnFalse(int checkX, int checkY)
         {
             Coords minCoord = new Coords(-15, -10);
             Coords maxCoord = new Coords(10, 32);
             Coords obstacleCoords = new Coords(8, 12);
-            Coords checkCoords = new Coords(0, 0);
+            Coords checkCoords = new Coords(checkX, checkY);
             var planetGrid = new PlanetGrid(minCoord, maxCoord);
 
             planetGrid.AddObstacle(obstacleCoords.X, obstacleCoords.Y);
             bool result = planetGrid.CheckObstacle(checkCoords);
             result.Should().BeFalse();
 
+        }
+
+        [Test]
+        [TestCase(0, 0)]
+        [TestCase(8, 11)]
+        [TestCase(9, 11)]
+        [TestCase(8, 13)]
+        [TestCase(9, 12)]
+        public void WhenObstacleIsAtCoordsCheckObstacleReturnTrue(int checkX, int checkY)
+        {
+            Coords minCoord = new Coords(-15, -10);
+            Coords maxCoord = new Coords(10, 32);
+            
+            Coords checkCoords = new Coords(checkX, checkY);
+            var planetGrid = new PlanetGrid(minCoord, maxCoord);
+
+            planetGrid.AddObstacle(checkX, checkY);
+            bool result = planetGrid.CheckObstacle(checkCoords);
+            result.Should().BeTrue();
 
         }
 
