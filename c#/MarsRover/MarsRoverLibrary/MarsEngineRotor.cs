@@ -6,7 +6,7 @@ namespace MarsRover
 {
     public class MarsEngineRotor
     {
-        public MarsEngineDirection Direction { get; }
+        public MarsEngineDirection Direction { get; internal set; }
 
         public MarsEngineRotor(MarsEngineDirection direction)
         {
@@ -15,7 +15,10 @@ namespace MarsRover
 
         public MarsEngineDirection RotateLeft()
         {
-            return Direction + 90;
+            Direction += 90;
+            while ((int)Direction >= 360)
+                Direction = Direction - 360;
+            return Direction;
         }
     }
 
@@ -24,6 +27,6 @@ namespace MarsRover
         East = 0,
         North = 90,
         West = 180,
-        South = 275
+        South = 270
     }
 }
