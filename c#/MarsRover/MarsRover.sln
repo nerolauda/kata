@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverAPI", "MarsRoverAPI\MarsRoverAPI.csproj", "{4CBAE7D3-571C-4D03-9A9D-83220AC9A6CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoistioningEngineTest", "PoistioningEngineTest\PoistioningEngineTest.csproj", "{B07F951D-380C-41CF-9734-AFD927EE696E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PositioningEngineTest", "PoistioningEngineTest\PositioningEngineTest.csproj", "{B07F951D-380C-41CF-9734-AFD927EE696E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverLibrary", "MarsRoverLibrary\MarsRoverLibrary.csproj", "{C58D7348-EF84-405E-B029-944A96C678AA}"
 EndProject

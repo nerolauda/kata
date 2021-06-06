@@ -2,7 +2,7 @@
 using MarsRover;
 using NUnit.Framework;
 
-namespace PoistioningEngineTest
+namespace PositioningEngineTest
 {
     class EngineTests
     {
