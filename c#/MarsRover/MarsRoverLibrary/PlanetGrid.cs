@@ -22,9 +22,16 @@ namespace MarsRover
             if (MaxPos.Y <= MinPos.Y) throw new ArgumentException("MinPos.Y MUST be lower than MaxPos.Y");
         }
 
+
+
         public Coords NextCoords(Coords coords, Direction direction, Versus versus)
         {
-            return new Coords(coords.X + (int)versus * (int)Math.Cos((short)direction * Math.PI / 180.0), coords.Y + (int)versus * (int)Math.Sin((short)direction * Math.PI / 180.0));
+            int newX = coords.X + (int)versus * (int)Math.Cos((short)direction * Math.PI / 180.0);
+            int newY = coords.Y + (int)versus * (int)Math.Sin((short)direction * Math.PI / 180.0);
+            if (newX > MaxPos.X)
+                newX = MinPos.X;
+
+            return new Coords(newX, newY);
         }
 
     }

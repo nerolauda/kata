@@ -63,5 +63,24 @@ namespace PositioningEngineTest
             result.Y.Should().Be(expectedY);
         }
 
+        [Test]
+        [TestCase(Versus.Forward, Direction.East, 10, 2, -10, 2)]
+        
+        [Parallelizable(ParallelScope.All)]
+        public void NextCoordsIsCoeherentWithPacmanEffect(Versus versus, Direction direction, int startX, int startY, int expectedX, int expectedY)
+        {
+            Coords minCoord = new Coords(-10, -20);
+            Coords maxCoord = new Coords(10, 20);
+            var planetGrid = new PlanetGrid(minCoord, maxCoord);
+
+            Coords origin = new Coords(startX, startY);
+
+            Coords result = planetGrid.NextCoords(origin, direction, versus);
+            result.X.Should().Be(expectedX);
+            result.Y.Should().Be(expectedY);
+        }
+
+
+
     }
 }
