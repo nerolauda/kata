@@ -4,16 +4,16 @@ using System.Text;
 
 namespace MarsRover
 {
-    public class MarsEngineRotor
+    public class Rotor
     {
-        public MarsEngineDirection Direction { get; internal set; }
+        public Direction Direction { get; internal set; }
 
-        public MarsEngineRotor(MarsEngineDirection direction)
+        public Rotor(Direction direction)
         {
             this.Direction = direction;
         }
 
-        public MarsEngineDirection RotateLeft()
+        public Direction RotateLeft()
         {
             Direction += 90;
             while ((int)Direction >= 360)
@@ -23,20 +23,12 @@ namespace MarsRover
 
 
 
-        public MarsEngineDirection RotateRight()
+        public Direction RotateRight()
         {
             Direction -= 90;
             while ((int)Direction < 0)
                 Direction += 360;
             return Direction;
         }
-    }
-
-    public enum MarsEngineDirection : short
-    {
-        East = 0,
-        North = 90,
-        West = 180,
-        South = 270
     }
 }

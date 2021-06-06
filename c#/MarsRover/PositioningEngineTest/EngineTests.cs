@@ -11,8 +11,8 @@ namespace PositioningEngineTest
         {
             int expectedValue = 1;
 
-            MarsRoverEngine engine = new MarsRoverEngine();
-            int result = engine.Move(MarsRoverEngineDirection.Forward);
+            Engine engine = new Engine();
+            int result = engine.Move(Versus.Forward);
             result.Should().Be(expectedValue);
 
         }
@@ -21,8 +21,8 @@ namespace PositioningEngineTest
         {
             int expectedValue = -1;
 
-            MarsRoverEngine engine = new MarsRoverEngine();
-            int result = engine.Move(MarsRoverEngineDirection.Backward);
+            Engine engine = new Engine();
+            int result = engine.Move(Versus.Backward);
             result.Should().Be(expectedValue);
 
         }

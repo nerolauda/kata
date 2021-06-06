@@ -12,10 +12,10 @@ namespace PositioningEngineTest
         [Test]
         public void RotorDirectionReturnExpectedInitializedDirection()
         {
-            foreach (MarsEngineDirection expectedDirection in Enum.GetValues(typeof(MarsEngineDirection)))
+            foreach (Direction expectedDirection in Enum.GetValues(typeof(Direction)))
             {
-                MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
-                MarsEngineDirection result = rotor.Direction;
+                Rotor rotor = new Rotor(expectedDirection);
+                Direction result = rotor.Direction;
                 result.Should().Be(expectedDirection);
             }
         }
@@ -23,76 +23,76 @@ namespace PositioningEngineTest
         [Test]
         public void WhenInitialDirectionIsEastAfterRotateLeftDirectionIsNorth()
         {
-            var expectedDirection = MarsEngineDirection.East;
-            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
-            MarsEngineDirection result = rotor.RotateLeft();
-            result.Should().Be(MarsEngineDirection.North);
+            var expectedDirection = Direction.East;
+            Rotor rotor = new Rotor(expectedDirection);
+            Direction result = rotor.RotateLeft();
+            result.Should().Be(Direction.North);
         }
 
 
         [Test]
         public void WhenInitialDirectionIsNorthAfterRotateLeftDirectionIsWest()
         {
-            var expectedDirection = MarsEngineDirection.North;
-            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
-            MarsEngineDirection result = rotor.RotateLeft();
-            result.Should().Be(MarsEngineDirection.West);
+            var expectedDirection = Direction.North;
+            Rotor rotor = new Rotor(expectedDirection);
+            Direction result = rotor.RotateLeft();
+            result.Should().Be(Direction.West);
         }
 
         [Test]
         public void WhenInitialDirectionIsWestAfterRotateLeftDirectionIsSouth()
         {
-            var expectedDirection = MarsEngineDirection.West;
-            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
-            MarsEngineDirection result = rotor.RotateLeft();
-            result.Should().Be(MarsEngineDirection.South);
+            var expectedDirection = Direction.West;
+            Rotor rotor = new Rotor(expectedDirection);
+            Direction result = rotor.RotateLeft();
+            result.Should().Be(Direction.South);
         }
 
         [Test]
         public void WhenInitialDirectionIsSouthAfterRotateLeftDirectionIsEast()
         {
-            var expectedDirection = MarsEngineDirection.South;
-            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
-            MarsEngineDirection result = rotor.RotateLeft();
-            result.Should().Be(MarsEngineDirection.East);
+            var expectedDirection = Direction.South;
+            Rotor rotor = new Rotor(expectedDirection);
+            Direction result = rotor.RotateLeft();
+            result.Should().Be(Direction.East);
         }
 
         [Test]
         public void WhenInitialDirectionIsEasthAfterRotateRightDirectionIsSouth()
         {
-            var expectedDirection = MarsEngineDirection.East;
-            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
-            MarsEngineDirection result = rotor.RotateRight();
-            result.Should().Be(MarsEngineDirection.South);
+            var expectedDirection = Direction.East;
+            Rotor rotor = new Rotor(expectedDirection);
+            Direction result = rotor.RotateRight();
+            result.Should().Be(Direction.South);
         }
 
 
         [Test]
         public void WhenInitialDirectionIsSouthAfterRotateRightDirectionIsWest()
         {
-            var expectedDirection = MarsEngineDirection.South;
-            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
-            MarsEngineDirection result = rotor.RotateRight();
-            result.Should().Be(MarsEngineDirection.West);
+            var expectedDirection = Direction.South;
+            Rotor rotor = new Rotor(expectedDirection);
+            Direction result = rotor.RotateRight();
+            result.Should().Be(Direction.West);
         }
 
 
         [Test]
         public void WhenInitialDirectionIsWestAfterRotateRightDirectionIsNorth()
         {
-            var expectedDirection = MarsEngineDirection.West;
-            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
-            MarsEngineDirection result = rotor.RotateRight();
-            result.Should().Be(MarsEngineDirection.North);
+            var expectedDirection = Direction.West;
+            Rotor rotor = new Rotor(expectedDirection);
+            Direction result = rotor.RotateRight();
+            result.Should().Be(Direction.North);
         }
 
         [Test]
         public void WhenInitialDirectionIsNorthAfterRotateRightDirectionIsEast()
         {
-            var expectedDirection = MarsEngineDirection.North;
-            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
-            MarsEngineDirection result = rotor.RotateRight();
-            result.Should().Be(MarsEngineDirection.East);
+            var expectedDirection = Direction.North;
+            Rotor rotor = new Rotor(expectedDirection);
+            Direction result = rotor.RotateRight();
+            result.Should().Be(Direction.East);
         }
 
 
