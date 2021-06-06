@@ -12,8 +12,9 @@ namespace MarsRover
         }
     }
 
-    public enum MarsRoverEngineDirection: int
+    public enum MarsRoverEngineDirection : int
     {
-        Forward= 1,
+        Forward = 1,
+        Backward = -1,
     }
 }
