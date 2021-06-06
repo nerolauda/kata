@@ -42,7 +42,19 @@ namespace PositioningEngineTest
         }
 
 
-
+        [Test]
+        public void NextCoordsRetunXplusOneWhenDirectionIsEasthAndNotOnBorder()
+        {
+            Coords minCoord = new Coords(-10, -20);
+            Coords maxCoord = new Coords(10, 20);
+            Coords origin = new Coords(0, 0);
+            Direction direction = Direction.East;
+            Versus versus = Versus.Forward;
+            var planetGrid = new PlanetGrid(minCoord, maxCoord);
+            Coords result = planetGrid.NextCoords(origin, direction, versus);
+            result.X.Should().Be(1);
+            result.Y.Should().Be(0);
+        }
 
     }
 }
