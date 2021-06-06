@@ -29,7 +29,6 @@ namespace PositioningEngineTest
             action.Should().Throw<ArgumentException>();
         }
 
-
         [Test]
         public void WhenYMinGTEYMaxPlanetGridConstructThrowsArgumentException()
         {
@@ -41,24 +40,24 @@ namespace PositioningEngineTest
             action.Should().Throw<ArgumentException>();
         }
 
-
-        
-
         [Test]
-        [TestCase(Versus.Forward, Direction.East, 0,0,1,0)]
+        [TestCase(Versus.Forward, Direction.East, 0, 0, 1, 0)]
         [TestCase(Versus.Forward, Direction.North, 0, 0, 0, 1)]
-        [TestCase(Versus.Forward, Direction.West, 0, 0, -1,0)]
+        [TestCase(Versus.Forward, Direction.West, 0, 0, -1, 0)]
         [TestCase(Versus.Forward, Direction.South, 0, 0, 0, -1)]
+        [TestCase(Versus.Backward, Direction.East, 0, 0, -1, 0)]
+        [TestCase(Versus.Backward, Direction.North, 0, 0, 0, -1)]
+        [TestCase(Versus.Backward, Direction.West, 0, 0, 1, 0)]
+        [TestCase(Versus.Backward, Direction.South, 0, 0, 0, 1)]
         [Parallelizable(ParallelScope.All)]
-        public void NextCoordsIsCoeherentWithExpectation(Versus versus, Direction direction,int startX,int startY,int expectedX,int expectedY)
+        public void NextCoordsIsCoeherentWithExpectation(Versus versus, Direction direction, int startX, int startY, int expectedX, int expectedY)
         {
-            
             Coords minCoord = new Coords(-10, -20);
             Coords maxCoord = new Coords(10, 20);
             var planetGrid = new PlanetGrid(minCoord, maxCoord);
-            
+
             Coords origin = new Coords(startX, startY);
-            
+
             Coords result = planetGrid.NextCoords(origin, direction, versus);
             result.X.Should().Be(expectedX);
             result.Y.Should().Be(expectedY);

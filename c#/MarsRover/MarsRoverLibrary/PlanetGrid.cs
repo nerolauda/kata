@@ -24,7 +24,7 @@ namespace MarsRover
 
         public Coords NextCoords(Coords coords, Direction direction, Versus versus)
         {
-            return new Coords(coords.X + (int)Math.Cos((short)direction * Math.PI / 180.0), coords.Y + (int)Math.Sin((short)direction * Math.PI / 180.0));
+            return new Coords(coords.X + (int)versus * (int)Math.Cos((short)direction * Math.PI / 180.0), coords.Y + (int)versus * (int)Math.Sin((short)direction * Math.PI / 180.0));
         }
 
     }
