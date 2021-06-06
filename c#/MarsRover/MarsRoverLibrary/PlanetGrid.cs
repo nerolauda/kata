@@ -18,7 +18,7 @@ namespace MarsRoverLibrary
 
         private void ValidateLimits()
         {
-
+            if (MaxPos.X <= MinPos.X) throw new ArgumentException("MinPos.X MUST be lower than MaxPos.X");
         }
 
     }
