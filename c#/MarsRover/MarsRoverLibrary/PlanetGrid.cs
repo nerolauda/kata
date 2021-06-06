@@ -32,6 +32,10 @@ namespace MarsRover
                 newX = MinPos.X;
             if (newX < MinPos.X)
                 newX = MaxPos.X;
+            if (newY > MaxPos.Y)
+                newY = MinPos.Y;
+            if (newY < MinPos.Y)
+                newY = MaxPos.Y;
 
             return new Coords(newX, newY);
         }

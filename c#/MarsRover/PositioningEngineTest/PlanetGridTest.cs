@@ -64,14 +64,21 @@ namespace PositioningEngineTest
         }
 
         [Test]
-        [TestCase(Versus.Forward, Direction.East, 10, 2, -10, 2)]
-        [TestCase(Versus.Forward, Direction.West, -10, 2, 10, 2)]
+        [TestCase(Versus.Forward, Direction.East, 15, 2, -10, 2)]
+        [TestCase(Versus.Forward, Direction.West, -10, 2, 15, 2)]
+        [TestCase(Versus.Forward, Direction.North, 2, 25, 2, -20)]
+        [TestCase(Versus.Forward, Direction.South, 2, -20, 2, 25)]
+        [TestCase(Versus.Backward, Direction.East, -10, 2, 15, 2)]
+        [TestCase(Versus.Backward, Direction.West, 15, 2, -10, 2)]
+        [TestCase(Versus.Backward, Direction.South, 2, 25, 2, -20)]
+        [TestCase(Versus.Backward, Direction.North, 2, -20, 2, 25)]
+
 
         [Parallelizable(ParallelScope.All)]
         public void NextCoordsIsCoeherentWithPacmanEffect(Versus versus, Direction direction, int startX, int startY, int expectedX, int expectedY)
         {
             Coords minCoord = new Coords(-10, -20);
-            Coords maxCoord = new Coords(10, 20);
+            Coords maxCoord = new Coords(15, 25);
             var planetGrid = new PlanetGrid(minCoord, maxCoord);
 
             Coords origin = new Coords(startX, startY);
