@@ -70,5 +70,33 @@ namespace PositioningEngineTest
             result.Y.Should().Be(1);
         }
 
+        [Test]
+        public void NextCoordsRetunXMinusOneWhenDirectionIsWestAndNotOnBorder()
+        {
+            Coords minCoord = new Coords(-10, -20);
+            Coords maxCoord = new Coords(10, 20);
+            Coords origin = new Coords(0, 0);
+            Direction direction = Direction.West;
+            Versus versus = Versus.Forward;
+            var planetGrid = new PlanetGrid(minCoord, maxCoord);
+            Coords result = planetGrid.NextCoords(origin, direction, versus);
+            result.X.Should().Be(-1);
+            result.Y.Should().Be(0);
+        }
+
+        [Test]
+        public void NextCoordsRetunYMinusOneWhenDirectionIsSouthAndNotOnBorder()
+        {
+            Coords minCoord = new Coords(-10, -20);
+            Coords maxCoord = new Coords(10, 20);
+            Coords origin = new Coords(0, 0);
+            Direction direction = Direction.South;
+            Versus versus = Versus.Forward;
+            var planetGrid = new PlanetGrid(minCoord, maxCoord);
+            Coords result = planetGrid.NextCoords(origin, direction, versus);
+            result.X.Should().Be(0);
+            result.Y.Should().Be(-1);
+        }
+
     }
 }
