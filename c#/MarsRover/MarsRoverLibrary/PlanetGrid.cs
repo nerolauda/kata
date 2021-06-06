@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MarsRoverLibrary
+namespace MarsRover
 {
     public class PlanetGrid
     {
@@ -21,6 +21,8 @@ namespace MarsRoverLibrary
             if (MaxPos.X <= MinPos.X) throw new ArgumentException("MinPos.X MUST be lower than MaxPos.X");
             if (MaxPos.Y <= MinPos.Y) throw new ArgumentException("MinPos.Y MUST be lower than MaxPos.Y");
         }
+
+        
 
     }
 }

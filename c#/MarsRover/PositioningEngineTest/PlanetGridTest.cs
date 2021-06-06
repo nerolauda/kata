@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using MarsRoverLibrary;
+using MarsRover;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

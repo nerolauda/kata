@@ -1,4 +1,4 @@
-﻿namespace MarsRoverLibrary
+﻿namespace MarsRover
 {
     public struct Coords
     {
