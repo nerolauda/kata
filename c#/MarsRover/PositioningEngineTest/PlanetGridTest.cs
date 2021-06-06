@@ -10,7 +10,7 @@ namespace PositioningEngineTest
     public class PlanetGridTest
     {
         [Test]
-        public void ConstructWithRegularLimitsDoNotThrowExceptions()
+        public void WhenBorderLimitsAreRegularPlanetGridContructDoesNotThrowExceptions()
         {
             Coords minCoord = new Coords(-10, -20);
             Coords maxCoord = new Coords(20, 40);
@@ -19,7 +19,7 @@ namespace PositioningEngineTest
         }
 
         [Test]
-        public void ConstructWhenXMinGTEXMaxThrowsArgumentException()
+        public void WhenXMinGTEXMaxPlanetGridConstructThrowsArgumentException()
         {
             Coords minCoord = new Coords(20, -20);
             Coords maxCoord = new Coords(20, 40);
@@ -31,7 +31,7 @@ namespace PositioningEngineTest
 
 
         [Test]
-        public void ConstructWhenYMinGTEYMaxThrowsArgumentException()
+        public void WhenYMinGTEYMaxPlanetGridConstructThrowsArgumentException()
         {
             Coords minCoord = new Coords(-10, 40);
             Coords maxCoord = new Coords(20, 40);
@@ -43,7 +43,7 @@ namespace PositioningEngineTest
 
 
         [Test]
-        public void NextCoordsRetunXplusOneWhenDirectionIsEasthAndNotOnBorder()
+        public void WhenDirectionIsEasthVersusIsForwardAndNotOnBorderNextCoordsRetunXplusOne()
         {
             Coords minCoord = new Coords(-10, -20);
             Coords maxCoord = new Coords(10, 20);
@@ -57,7 +57,7 @@ namespace PositioningEngineTest
         }
 
         [Test]
-        public void NextCoordsRetunYplusOneWhenDirectionIsNorthAndNotOnBorder()
+        public void WhenDirectionIsNorthVersusIsForwardAndNotOnBorderNextCoordsRetunYplusOne()
         {
             Coords minCoord = new Coords(-10, -20);
             Coords maxCoord = new Coords(10, 20);
@@ -71,7 +71,7 @@ namespace PositioningEngineTest
         }
 
         [Test]
-        public void NextCoordsRetunXMinusOneWhenDirectionIsWestAndNotOnBorder()
+        public void WhenDirectionIsWestVersusIsForwardAndNotOnBorderNextCoordsRetunXMinusOne()
         {
             Coords minCoord = new Coords(-10, -20);
             Coords maxCoord = new Coords(10, 20);
@@ -85,7 +85,7 @@ namespace PositioningEngineTest
         }
 
         [Test]
-        public void NextCoordsRetunYMinusOneWhenDirectionIsSouthAndNotOnBorder()
+        public void WhenDirectionIsSouthVersusIsForwardAndNotOnBorderNextCoordsRetunYMinusOne()
         {
             Coords minCoord = new Coords(-10, -20);
             Coords maxCoord = new Coords(10, 20);
@@ -97,6 +97,8 @@ namespace PositioningEngineTest
             result.X.Should().Be(0);
             result.Y.Should().Be(-1);
         }
+
+        
 
     }
 }
