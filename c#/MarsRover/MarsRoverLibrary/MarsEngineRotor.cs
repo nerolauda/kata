@@ -15,7 +15,7 @@ namespace MarsRover
 
         public MarsEngineDirection RotateLeft()
         {
-            return MarsEngineDirection.North;
+            return Direction + 90;
         }
     }
 

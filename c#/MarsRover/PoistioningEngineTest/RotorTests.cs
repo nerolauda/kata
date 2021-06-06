@@ -29,5 +29,15 @@ namespace PoistioningEngineTest
             result.Should().Be(MarsEngineDirection.North);
         }
 
+
+        [Test]
+        public void WhenInitialDirectionIsNorthAfterRotateLeftDirectionIsWest()
+        {
+            var expectedDirection = MarsEngineDirection.North;
+            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
+            MarsEngineDirection result = rotor.RotateLeft();
+            result.Should().Be(MarsEngineDirection.West);
+        }
+
     }
 }
