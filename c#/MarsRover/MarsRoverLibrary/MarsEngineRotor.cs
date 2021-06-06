@@ -17,12 +17,22 @@ namespace MarsRover
         {
             Direction += 90;
             while ((int)Direction >= 360)
-                Direction = Direction - 360;
+                Direction -= 360;
+            return Direction;
+        }
+
+
+
+        public MarsEngineDirection RotateRight()
+        {
+            Direction -= 90;
+            while ((int)Direction < 0)
+                Direction += 360;
             return Direction;
         }
     }
 
-    public enum MarsEngineDirection : ushort
+    public enum MarsEngineDirection : short
     {
         East = 0,
         North = 90,

@@ -57,6 +57,27 @@ namespace PositioningEngineTest
             result.Should().Be(MarsEngineDirection.East);
         }
 
+        [Test]
+        public void WhenInitialDirectionIsEasthAfterRotateRightDirectionIsSouth()
+        {
+            var expectedDirection = MarsEngineDirection.East;
+            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
+            MarsEngineDirection result = rotor.RotateRight();
+            result.Should().Be(MarsEngineDirection.South);
+        }
+
+
+        [Test]
+        public void WhenInitialDirectionIsSouthAfterRotateRightDirectionIsWest()
+        {
+            var expectedDirection = MarsEngineDirection.South;
+            MarsEngineRotor rotor = new MarsEngineRotor(expectedDirection);
+            MarsEngineDirection result = rotor.RotateRight();
+            result.Should().Be(MarsEngineDirection.West);
+        }
+
+
+
 
 
     }
