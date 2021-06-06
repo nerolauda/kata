@@ -101,5 +101,24 @@ namespace PositioningEngineTest
 
         }
 
+
+        [Test]
+        [TestCase(-16, 0)]
+        [TestCase(11, 0)]
+        [TestCase(0, -11)]
+        [TestCase(0, 33)]
+        [TestCase(11, 33)]
+        [Parallelizable(ParallelScope.All)]
+        public void WhenObstacleIsOutsideGridAddbOstacleThrowsArgumentException(int obstacleX, int obstacleY)
+        {
+            Coords minCoord = new Coords(-15, -10);
+            Coords maxCoord = new Coords(10, 32);
+            var planetGrid = new PlanetGrid(minCoord, maxCoord);
+
+            Action action = () => planetGrid.AddObstacle(obstacleX, obstacleY);
+            action.Should().Throw<ArgumentException>();
+
+        }
+
     }
 }

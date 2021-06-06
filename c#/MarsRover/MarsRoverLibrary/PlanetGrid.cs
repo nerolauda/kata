@@ -45,8 +45,17 @@ namespace MarsRover
         public PlanetGrid AddObstacle(int obstacleX, int obstacleY)
         {
             Coords obstacleCoords = new Coords(obstacleX, obstacleY);
+            ValidateCoords(obstacleCoords);
             obstacles.Add(new Obstacle(obstacleCoords));
             return this;
+        }
+
+        private void ValidateCoords(Coords coords)
+        {
+            if (coords.X < MinPos.X) throw new ArgumentException($"coord.X ({coords.X}) cannot be lower than {MinPos.X}");
+            if (coords.X > MaxPos.X) throw new ArgumentException($"coord.X ({coords.X}) cannot be greater than {MaxPos.X}");
+            if (coords.Y < MinPos.Y) throw new ArgumentException($"coord.Y ({coords.Y}) cannot be lower than {MinPos.Y}");
+            if (coords.Y > MaxPos.Y) throw new ArgumentException($"coord.Y ({coords.Y}) cannot be greater than {MaxPos.Y}");
         }
     }
 }
