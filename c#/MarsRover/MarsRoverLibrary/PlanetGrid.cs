@@ -6,8 +6,8 @@ namespace MarsRoverLibrary
 {
     public class PlanetGrid
     {
-        public Coords MinPos { get; }
-        public Coords MaxPos { get; }
+        Coords MinPos { get; }
+        Coords MaxPos { get; }
 
         public PlanetGrid(Coords minCoord, Coords maxCoord)
         {
