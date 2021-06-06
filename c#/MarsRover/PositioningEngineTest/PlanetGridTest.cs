@@ -65,7 +65,8 @@ namespace PositioningEngineTest
 
         [Test]
         [TestCase(Versus.Forward, Direction.East, 10, 2, -10, 2)]
-        
+        [TestCase(Versus.Forward, Direction.West, -10, 2, 10, 2)]
+
         [Parallelizable(ParallelScope.All)]
         public void NextCoordsIsCoeherentWithPacmanEffect(Versus versus, Direction direction, int startX, int startY, int expectedX, int expectedY)
         {
@@ -79,8 +80,6 @@ namespace PositioningEngineTest
             result.X.Should().Be(expectedX);
             result.Y.Should().Be(expectedY);
         }
-
-
 
     }
 }
