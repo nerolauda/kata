@@ -8,12 +8,14 @@ namespace MarsRover
     {
         Coords MinPos { get; }
         Coords MaxPos { get; }
+        List<Obstacle> obstacles;
 
         public PlanetGrid(Coords minCoord, Coords maxCoord)
         {
             MinPos = minCoord;
             MaxPos = maxCoord;
             ValidateLimits();
+            obstacles = new List<Obstacle>();
         }
 
         private void ValidateLimits()
@@ -40,6 +42,11 @@ namespace MarsRover
             return new Coords(newX, newY);
         }
 
-
+        public PlanetGrid AddObstacle(int obstacleX, int obstacleY)
+        {
+            Coords obstacleCoords = new Coords(obstacleX, obstacleY);
+            obstacles.Add(new Obstacle(obstacleCoords));
+            return this;
+        }
     }
 }

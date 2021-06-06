@@ -71,8 +71,6 @@ namespace PositioningEngineTest
         [TestCase(Versus.Backward, Direction.West, 15, 2, -10, 2)]
         [TestCase(Versus.Backward, Direction.South, 2, 25, 2, -20)]
         [TestCase(Versus.Backward, Direction.North, 2, -20, 2, 25)]
-
-
         [Parallelizable(ParallelScope.All)]
         public void NextCoordsIsCoeherentWithPacmanEffect(Versus versus, Direction direction, int startX, int startY, int expectedX, int expectedY)
         {
@@ -85,6 +83,22 @@ namespace PositioningEngineTest
             Coords result = planetGrid.NextCoords(origin, direction, versus);
             result.X.Should().Be(expectedX);
             result.Y.Should().Be(expectedY);
+        }
+
+        [Test]
+        [TestCase(0, 0)]
+        [TestCase(-15, 10)]
+        [TestCase(10, 32)]
+        [Parallelizable(ParallelScope.All)]
+        public void WhenObstacleIsInsideGridAddbOstacleReturnPlanetGridItself(int obstacleX, int obstacleY)
+        {
+            Coords minCoord = new Coords(-15, -10);
+            Coords maxCoord = new Coords(10, 32);
+            var planetGrid = new PlanetGrid(minCoord, maxCoord);
+
+            PlanetGrid result = planetGrid.AddObstacle(obstacleX, obstacleY);
+            result.Should().Be(planetGrid);
+
         }
 
     }
