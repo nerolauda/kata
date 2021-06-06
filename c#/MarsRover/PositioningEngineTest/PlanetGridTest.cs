@@ -30,5 +30,19 @@ namespace PositioningEngineTest
         }
 
 
+        [Test]
+        public void ConstructWhenYMinGTEYMaxThrowsArgumentException()
+        {
+            Coords minCoord = new Coords(-10, 40);
+            Coords maxCoord = new Coords(20, 40);
+            Action action = () => new PlanetGrid(minCoord, maxCoord);
+            action.Should().Throw<ArgumentException>();
+            minCoord = new Coords(-10, 50);
+            action.Should().Throw<ArgumentException>();
+        }
+
+
+
+
     }
 }
