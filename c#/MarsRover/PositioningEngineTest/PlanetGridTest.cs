@@ -90,7 +90,7 @@ namespace PositioningEngineTest
         [TestCase(-15, 10)]
         [TestCase(10, 32)]
         [Parallelizable(ParallelScope.All)]
-        public void WhenObstacleIsInsideGridAddbOstacleReturnPlanetGridItself(int obstacleX, int obstacleY)
+        public void WhenObstacleIsInsideGridAddbObstacleReturnPlanetGridItself(int obstacleX, int obstacleY)
         {
             Coords minCoord = new Coords(-15, -10);
             Coords maxCoord = new Coords(10, 32);
@@ -109,7 +109,7 @@ namespace PositioningEngineTest
         [TestCase(0, 33)]
         [TestCase(11, 33)]
         [Parallelizable(ParallelScope.All)]
-        public void WhenObstacleIsOutsideGridAddbOstacleThrowsArgumentException(int obstacleX, int obstacleY)
+        public void WhenObstacleIsOutsideGridAddbObstacleThrowsArgumentException(int obstacleX, int obstacleY)
         {
             Coords minCoord = new Coords(-15, -10);
             Coords maxCoord = new Coords(10, 32);
