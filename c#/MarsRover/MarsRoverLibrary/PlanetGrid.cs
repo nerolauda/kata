@@ -57,5 +57,10 @@ namespace MarsRover
             if (coords.Y < MinPos.Y) throw new ArgumentException($"coord.Y ({coords.Y}) cannot be lower than {MinPos.Y}");
             if (coords.Y > MaxPos.Y) throw new ArgumentException($"coord.Y ({coords.Y}) cannot be greater than {MaxPos.Y}");
         }
+
+        public bool CheckObstacle(Coords checkCoords)
+        {
+            return false;
+        }
     }
 }

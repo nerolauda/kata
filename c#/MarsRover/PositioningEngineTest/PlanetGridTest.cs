@@ -120,5 +120,21 @@ namespace PositioningEngineTest
 
         }
 
+        [Test]
+        public void WhenObstacleIsNotAtCoordsCheckObstacleReturnFalse()
+        {
+            Coords minCoord = new Coords(-15, -10);
+            Coords maxCoord = new Coords(10, 32);
+            Coords obstacleCoords = new Coords(8, 12);
+            Coords checkCoords = new Coords(0, 0);
+            var planetGrid = new PlanetGrid(minCoord, maxCoord);
+
+            planetGrid.AddObstacle(obstacleCoords.X, obstacleCoords.Y);
+            bool result = planetGrid.CheckObstacle(checkCoords);
+            result.Should().BeFalse();
+
+
+        }
+
     }
 }
