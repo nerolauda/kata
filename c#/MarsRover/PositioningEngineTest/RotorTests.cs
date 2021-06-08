@@ -4,8 +4,9 @@ using NUnit.Framework;
 using System;
 
 
-namespace PositioningEngineTest
+namespace MarsRoverTest
 {
+    [TestFixture]
     class RotorTests
     {
         [Test]

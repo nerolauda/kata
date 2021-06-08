@@ -5,14 +5,20 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PositioningEngineTest
+namespace MarsRoverTest
 {
+    [TestFixture]
     public class ObstacleTests
     {
         [Test]
-        public void WhenCoordsAreSameMatchesReturnsTrue()
+		[TestCase(0, 0)]
+		[TestCase(10, 29)]
+		[TestCase(11, 30)]
+		[TestCase(11, 29)]
+		[TestCase(10, 31)]
+        public void WhenCoordsAreSameMatchesReturnsTrue(int checkX, int checkY)
         {
-            Coords obstacleCoords = new Coords(10, 30);
+            Coords obstacleCoords = new Coords(checkX, checkY);
             Obstacle obstacle = new Obstacle(obstacleCoords);
             bool result = obstacle.Matches(obstacleCoords);
 

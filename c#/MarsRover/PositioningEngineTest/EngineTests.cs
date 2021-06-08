@@ -2,8 +2,9 @@
 using MarsRover;
 using NUnit.Framework;
 
-namespace PositioningEngineTest
+namespace MarsRoverTest
 {
+    [TestFixture]
     class EngineTests
     {
         [Test]
