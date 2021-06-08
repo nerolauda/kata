@@ -10,7 +10,7 @@ namespace PositioningEngineTest
     public class ObstacleTests
     {
         [Test]
-        public void WhenCoordsAreSameMatchReturnsTrue()
+        public void WhenCoordsAreSameMatchesReturnsTrue()
         {
             Coords obstacleCoords = new Coords(10, 30);
             Obstacle obstacle = new Obstacle(obstacleCoords);
@@ -24,7 +24,7 @@ namespace PositioningEngineTest
         [TestCase(11, 30)]
         [TestCase(11, 29)]
         [TestCase(10, 31)]
-        public void WhenCoordsAreNotSameMatchReturnsFalse(int checkX, int checkY)
+        public void WhenCoordsAreNotSameMatchesReturnsFalse(int checkX, int checkY)
         {
             Coords obstacleCoords = new Coords(10, 30);
             Coords checkCoords = new Coords(checkX, checkY);
