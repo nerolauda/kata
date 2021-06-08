@@ -5,8 +5,8 @@ using System.Text;
 
 namespace MarsRover
 {
-    public class PlanetGrid
-    {
+    public class PlanetGrid : IPlanetGrid
+	{
         Coords MinPos { get; }
         Coords MaxPos { get; }
         List<Obstacle> obstacles;
