@@ -20,8 +20,9 @@ namespace MarsRoverTest
             Versus versus = Versus.Forward;
 
             var planetGridMock = new Mock<IPlanetGrid>(MockBehavior.Strict);
-            planetGridMock.Setup(grid => grid.NextCoords(landingCoords, initialDirection, versus)).Returns(nextCoords);
-            planetGridMock.Setup(grid => grid.CheckObstacle(nextCoords)).Returns(It.IsAny<bool>());
+            MockSequence sequence = new MockSequence();
+            planetGridMock.InSequence(sequence).Setup(grid => grid.NextCoords(landingCoords, initialDirection, versus)).Returns(nextCoords);
+            planetGridMock.InSequence(sequence).Setup(grid => grid.CheckObstacle(nextCoords)).Returns(It.IsAny<bool>());
 
             Rover rover = new Rover(planetGridMock.Object, landingCoords, initialDirection);
             rover.Move(versus);
