@@ -16,13 +16,19 @@ namespace MarsRover
             this.Position = landingPositionposition;
             this.direction = initialDirection;
         }
-        public void Move(Versus versus)
+        public MoveResult Move(Versus versus)
         {
+            MoveResult moveResult = new MoveResult();
             Coords nextPosition = planetGrid.NextCoords(Position, direction, versus);
             if (!planetGrid.CheckObstacle(nextPosition))
             {
                 Position = nextPosition;
             }
+            else
+            {
+                moveResult.ObstacledAt(nextPosition);
+            }
+            return moveResult;
         }
     }
 }
