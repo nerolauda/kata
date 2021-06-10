@@ -8,7 +8,7 @@ using System.Text;
 namespace MarsRoverTest
 {
     [TestFixture]
-    public class TestMoveResult
+    public class MoveResultTest
     {
         [Test]
         public void WhenNotInvokedObstacleAtIsPresentReturnFalse()
