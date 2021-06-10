@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MarsRover;
 using Moq;
 using NUnit.Framework;
@@ -76,7 +73,6 @@ namespace MarsRoverTest
             moveResult.ObstaclePosition.Should().Be(nextCoords);
 
         }
-
 
         [Test]
         public void WhenThereIsNoObstacleAndRoverMoveRoverReportsNoObstaclePresence()

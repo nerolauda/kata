@@ -1,9 +1,6 @@
 ﻿using FluentAssertions;
 using MarsRover;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MarsRoverTest
 {
@@ -16,7 +13,6 @@ namespace MarsRoverTest
             MoveResult moveResult = new MoveResult();
             moveResult.ObstacleFound().Should().BeFalse();
         }
-
 
         [Test]
         public void WhenInvokedObstacleAtIsPresentReturnTrue()
