@@ -18,7 +18,11 @@ namespace MarsRover
         }
         public void Move(Versus versus)
         {
-            Position = planetGrid.NextCoords(Position, direction, versus);
+            Coords nextPosition = planetGrid.NextCoords(Position, direction, versus);
+            if (!planetGrid.CheckObstacle(nextPosition))
+            {
+                Position = nextPosition;
+            }
         }
     }
 }
