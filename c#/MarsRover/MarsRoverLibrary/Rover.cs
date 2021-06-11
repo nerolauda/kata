@@ -8,18 +8,27 @@ namespace MarsRover
     {
         private readonly IPlanetGrid planetGrid;
         public Coords Position { get; private set; }
-        private Direction direction;
+        private IRotor rotor;
+        private Dictionary<Rotation, Action> rotationActions;
 
-        public Rover(IPlanetGrid planetGrid, Coords landingPositionposition, Direction initialDirection)
+
+
+
+
+
+        public Rover(IPlanetGrid planetGrid, Coords landingPositionposition, IRotor rotor)
         {
             this.planetGrid = planetGrid;
             this.Position = landingPositionposition;
-            this.direction = initialDirection;
+            this.rotor = rotor;
+            rotationActions = new Dictionary<Rotation, Action>();
+            rotationActions.Add(Rotation.Left, () => rotor.RotateLeft());
+            rotationActions.Add(Rotation.Right, () => rotor.RotateRight());
         }
         public MoveResult Move(Versus versus)
         {
             MoveResult moveResult = new MoveResult();
-            Coords nextPosition = planetGrid.NextCoords(Position, direction, versus);
+            Coords nextPosition = planetGrid.NextCoords(Position, rotor.Direction, versus);
             if (!planetGrid.CheckObstacle(nextPosition))
             {
                 Position = nextPosition;
@@ -29,6 +38,11 @@ namespace MarsRover
                 moveResult.ObstacledAt(nextPosition);
             }
             return moveResult;
+        }
+
+        public void Rotate(Rotation rotation)
+        {
+            rotationActions[rotation]();
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MarsRover
 {
-    public class Rotor
+    public class Rotor : IRotor
     {
         public Direction Direction { get; internal set; }
 

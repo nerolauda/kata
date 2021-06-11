@@ -27,22 +27,28 @@ namespace MarsRoverTest
         public void WhenRoverMovePlanetGridNextCoordIsInvokedProperly()
         {
             var planetGridMock = new Mock<IPlanetGrid>(MockBehavior.Strict);
+            Rotor rotor = new Rotor(initialDirection);
+
             MockSequence sequence = new MockSequence();
             planetGridMock.InSequence(sequence).Setup(grid => grid.NextCoords(landingCoords, initialDirection, versus)).Returns(nextCoords);
             planetGridMock.InSequence(sequence).Setup(grid => grid.CheckObstacle(nextCoords)).Returns(It.IsAny<bool>());
 
-            Rover rover = new Rover(planetGridMock.Object, landingCoords, initialDirection);
+            Rover rover = new Rover(planetGridMock.Object, landingCoords, rotor);
             rover.Move(versus);
         }
 
         [Test]
         public void WhenThereIsNoObstacleAndRoverMoveRoverCoordsChange()
         {
+            var rotorMock = new Mock<Rotor>();
+            Rotor rotor = new Rotor(initialDirection);
+
             var planetGridMock = new Mock<IPlanetGrid>(MockBehavior.Strict);
             planetGridMock.Setup(grid => grid.NextCoords(landingCoords, initialDirection, versus)).Returns(nextCoords);
             planetGridMock.Setup(grid => grid.CheckObstacle(nextCoords)).Returns(false);
 
-            Rover rover = new Rover(planetGridMock.Object, landingCoords, initialDirection);
+
+            Rover rover = new Rover(planetGridMock.Object, landingCoords, rotor);
             rover.Move(versus);
             rover.Position.Should().Be(nextCoords);
         }
@@ -50,11 +56,14 @@ namespace MarsRoverTest
         [Test]
         public void WhenThereIsAnObstacleAndRoverMoveRoverCoordsDoNotChange()
         {
+            var rotorMock = new Mock<Rotor>();
+            Rotor rotor = new Rotor(initialDirection);
             var planetGridMock = new Mock<IPlanetGrid>(MockBehavior.Strict);
             planetGridMock.Setup(grid => grid.NextCoords(landingCoords, initialDirection, versus)).Returns(nextCoords);
             planetGridMock.Setup(grid => grid.CheckObstacle(nextCoords)).Returns(true);
 
-            Rover rover = new Rover(planetGridMock.Object, landingCoords, initialDirection);
+
+            Rover rover = new Rover(planetGridMock.Object, landingCoords, rotor);
             rover.Move(versus);
             rover.Position.Should().Be(landingCoords);
         }
@@ -62,11 +71,13 @@ namespace MarsRoverTest
         [Test]
         public void WhenThereIsAnObstacleAndRoverMoveRoverReportsObstaclePresence()
         {
+            var rotorMock = new Mock<Rotor>();
+            Rotor rotor = new Rotor(initialDirection);
             var planetGridMock = new Mock<IPlanetGrid>(MockBehavior.Strict);
             planetGridMock.Setup(grid => grid.NextCoords(landingCoords, initialDirection, versus)).Returns(nextCoords);
             planetGridMock.Setup(grid => grid.CheckObstacle(nextCoords)).Returns(true);
 
-            Rover rover = new Rover(planetGridMock.Object, landingCoords, initialDirection);
+            Rover rover = new Rover(planetGridMock.Object, landingCoords, rotor);
             MoveResult moveResult = rover.Move(versus);
 
             moveResult.ObstacleFound().Should().BeTrue();
@@ -77,14 +88,40 @@ namespace MarsRoverTest
         [Test]
         public void WhenThereIsNoObstacleAndRoverMoveRoverReportsNoObstaclePresence()
         {
+            var rotorMock = new Mock<Rotor>();
+            Rotor rotor = new Rotor(initialDirection);
             var planetGridMock = new Mock<IPlanetGrid>(MockBehavior.Strict);
             planetGridMock.Setup(grid => grid.NextCoords(landingCoords, initialDirection, versus)).Returns(nextCoords);
             planetGridMock.Setup(grid => grid.CheckObstacle(nextCoords)).Returns(false);
 
-            Rover rover = new Rover(planetGridMock.Object, landingCoords, initialDirection);
+            Rover rover = new Rover(planetGridMock.Object, landingCoords, rotor);
             MoveResult moveResult = rover.Move(versus);
 
             moveResult.ObstacleFound().Should().BeFalse();
+        }
+
+        [Test]
+        public void WhenRoverRotateLeftRotorIsInvokedProperly()
+        {
+            var rotorMock = new Mock<IRotor>(MockBehavior.Strict);
+            rotorMock.Setup(r => r.RotateLeft()).Returns(It.IsAny<Direction>());
+            var planetGridMock = new Mock<IPlanetGrid>();
+
+            Rover rover = new Rover(planetGridMock.Object, landingCoords, rotorMock.Object);
+            rover.Rotate(Rotation.Left);
+
+        }
+
+        [Test]
+        public void WhenRoverRotateRightRotorIsInvokedProperly()
+        {
+            var rotorMock = new Mock<IRotor>(MockBehavior.Strict);
+            rotorMock.Setup(r => r.RotateRight()).Returns(It.IsAny<Direction>());
+            var planetGridMock = new Mock<IPlanetGrid>();
+
+            Rover rover = new Rover(planetGridMock.Object, landingCoords, rotorMock.Object);
+            rover.Rotate(Rotation.Right);
+
         }
     }
 
