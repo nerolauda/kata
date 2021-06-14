@@ -14,6 +14,7 @@ namespace MarsRover
             commands = new Dictionary<char, Action<IRover>>();
             commands.Add('f', rover => rover.Move(Versus.Forward));
             commands.Add('b', rover => rover.Move(Versus.Backward));
+            commands.Add('r', rover => rover.Rotate(Rotation.Right));
 
 
         }

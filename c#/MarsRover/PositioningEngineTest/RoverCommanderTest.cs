@@ -26,5 +26,16 @@ namespace MarsRoverTest
             RoverCommander commander = new RoverCommander(roverMock.Object);
             commander.ExecuteCommands("b");
         }
+
+        [Test]
+        public void WhenReceiveRCommandRoverInvokesRotateRigth()
+        {
+            var roverMock = new Mock<IRover>(MockBehavior.Strict);
+            roverMock.Setup(rover => rover.Rotate(Rotation.Right));
+            RoverCommander commander = new RoverCommander(roverMock.Object);
+            commander.ExecuteCommands("r");
+        }
+
+
     }
 }
