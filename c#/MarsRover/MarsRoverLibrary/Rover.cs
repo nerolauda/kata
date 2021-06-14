@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MarsRover
 {
-    public class Rover
+    public class Rover : IRover
     {
         private readonly IPlanetGrid planetGrid;
         public Coords Position { get; private set; }
         private IRotor rotor;
         private Dictionary<Rotation, Action> rotationActions;
-
-
-
-
-
 
         public Rover(IPlanetGrid planetGrid, Coords landingPositionposition, IRotor rotor)
         {
@@ -44,5 +38,7 @@ namespace MarsRover
         {
             rotationActions[rotation]();
         }
+
+
     }
 }
