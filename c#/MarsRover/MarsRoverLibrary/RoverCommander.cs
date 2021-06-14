@@ -7,14 +7,20 @@ namespace MarsRover
     public class RoverCommander
     {
         public IRover Rover { get; }
+        private Dictionary<char, Action<IRover>> commands;
         public RoverCommander(IRover rover)
         {
             Rover = rover;
+            commands = new Dictionary<char, Action<IRover>>();
+            commands.Add('f', rover => rover.Move(Versus.Forward));
+            commands.Add('b', rover => rover.Move(Versus.Backward));
+
+
         }
 
         public void ExecuteCommands(string commandString)
         {
-            Rover.Move(Versus.Forward);
+            commands[commandString[0]](Rover);
         }
     }
 }

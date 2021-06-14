@@ -10,12 +10,21 @@ namespace MarsRoverTest
     [TestFixture]
     public class RoverCommanderTest
     {
-        public void WhenReceiveFCommandFRoverInvokesMOveForward()
+        [Test]
+        public void WhenReceiveFCommandRoverInvokesMoveForward()
         {
             var roverMock = new Mock<IRover>(MockBehavior.Strict);
             roverMock.Setup(rover => rover.Move(Versus.Forward)).Returns(new MoveResult());
             RoverCommander commander = new RoverCommander(roverMock.Object);
             commander.ExecuteCommands("f");
+        }
+        [Test]
+        public void WhenReceiveBCommandRoverInvokesMoveBackward()
+        {
+            var roverMock = new Mock<IRover>(MockBehavior.Strict);
+            roverMock.Setup(rover => rover.Move(Versus.Backward)).Returns(new MoveResult());
+            RoverCommander commander = new RoverCommander(roverMock.Object);
+            commander.ExecuteCommands("b");
         }
     }
 }
