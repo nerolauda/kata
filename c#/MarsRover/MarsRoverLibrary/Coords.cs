@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Drawing;
 
 namespace MarsRover
 {
-    public struct Coords
+    public readonly struct Coords
     {
         public int X { get; }
         public int Y { get; }
@@ -12,7 +11,7 @@ namespace MarsRover
             X = x;
             Y = y;
         }
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
             return obj is Coords coords && Equals(coords);
         }
@@ -31,6 +30,17 @@ namespace MarsRover
         {
             return (X << 2) ^ Y;
         }
+
+        public static bool operator ==(Coords coord1, Coords coord2)
+        {
+            return coord1.Equals(coord2);
+        }
+
+        public static bool operator !=(Coords coord1, Coords coord2)
+        {
+            return !coord1.Equals(coord2);
+        }
+
 
         public override string ToString()
         {
