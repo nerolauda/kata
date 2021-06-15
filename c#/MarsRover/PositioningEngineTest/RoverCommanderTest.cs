@@ -78,6 +78,5 @@ namespace MarsRoverTest
             roverMock.Verify(rover => rover.Rotate(Rotation.Left), Times.Never);
             roverMock.Verify(rover => rover.Move(Versus.Backward), Times.Never);
         }
-
     }
 }
