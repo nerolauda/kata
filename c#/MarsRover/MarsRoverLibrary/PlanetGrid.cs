@@ -6,10 +6,10 @@ using System.Text;
 namespace MarsRover
 {
     public class PlanetGrid : IPlanetGrid
-	{
-        Coords MinPos { get; }
-        Coords MaxPos { get; }
-        List<Obstacle> obstacles;
+    {
+        private Coords MinPos { get; }
+        private Coords MaxPos { get; }
+        private readonly List<Obstacle> obstacles;
 
         public PlanetGrid(Coords minCoord, Coords maxCoord)
         {
@@ -29,18 +29,24 @@ namespace MarsRover
 
         public Coords NextCoords(Coords coords, Direction direction, Versus versus)
         {
-            int newX = coords.X + (int)versus * (int)Math.Cos((short)direction * Math.PI / 180.0);
-            int newY = coords.Y + (int)versus * (int)Math.Sin((short)direction * Math.PI / 180.0);
-            if (newX > MaxPos.X)
-                newX = MinPos.X;
-            if (newX < MinPos.X)
-                newX = MaxPos.X;
-            if (newY > MaxPos.Y)
-                newY = MinPos.Y;
-            if (newY < MinPos.Y)
-                newY = MaxPos.Y;
+            double radiantAngle = (short)direction * Math.PI / 180.0;
+
+            int newX = coords.X + (int)versus * (int)Math.Cos(radiantAngle);
+            int newY = coords.Y + (int)versus * (int)Math.Sin(radiantAngle);
+
+            newX = ApplyPacmManPrinciple(newX, MinPos.X, MaxPos.X);
+            newY = ApplyPacmManPrinciple(newY, MinPos.Y, MaxPos.Y);
 
             return new Coords(newX, newY);
+        }
+
+        private static int ApplyPacmManPrinciple(int p, int minLim, int maxLim)
+        {
+            if (p > maxLim)
+                return minLim;
+            if (p < minLim)
+                return maxLim;
+            return p;
         }
 
         public PlanetGrid AddObstacle(int obstacleX, int obstacleY)

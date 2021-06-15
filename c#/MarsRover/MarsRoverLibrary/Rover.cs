@@ -7,17 +7,19 @@ namespace MarsRover
     {
         private readonly IPlanetGrid planetGrid;
         public Coords Position { get; private set; }
-        private IRotor rotor;
-        private Dictionary<Rotation, Action> rotationActions;
+        private readonly IRotor rotor;
+        private readonly Dictionary<Rotation, Action> rotationActions;
 
         public Rover(IPlanetGrid planetGrid, Coords landingPositionposition, IRotor rotor)
         {
             this.planetGrid = planetGrid;
             this.Position = landingPositionposition;
             this.rotor = rotor;
-            rotationActions = new Dictionary<Rotation, Action>();
-            rotationActions.Add(Rotation.Left, () => rotor.RotateLeft());
-            rotationActions.Add(Rotation.Right, () => rotor.RotateRight());
+            rotationActions = new Dictionary<Rotation, Action>
+            {
+                {Rotation.Left, () => rotor.RotateLeft()},
+                {Rotation.Right, () => rotor.RotateRight()}
+            };
         }
         public MoveResult Move(Versus versus)
         {

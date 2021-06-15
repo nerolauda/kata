@@ -6,24 +6,30 @@ namespace MarsRover
 {
     public class RoverCommander
     {
-        public IRover Rover { get; }
-        private Dictionary<char, Func<IRover, bool>> commands;
+        private IRover Rover { get; }
+        private readonly Dictionary<char, Func<IRover, bool>> commands;
         public RoverCommander(IRover rover)
         {
             Rover = rover;
-            commands = new Dictionary<char, Func<IRover, bool>>();
-            commands.Add('f', rover => rover.Move(Versus.Forward).ObstacleFound());
-            commands.Add('b', rover => rover.Move(Versus.Backward).ObstacleFound());
-            commands.Add('r', rover =>
+            commands = new Dictionary<char, Func<IRover, bool>>
             {
-                rover.Rotate(Rotation.Right);
-                return false;
-            });
-            commands.Add('l', rover =>
-            {
-                rover.Rotate(Rotation.Left);
-                return false;
-            });
+                {'f', rover => rover.Move(Versus.Forward).ObstacleFound()},
+                {'b', rover => rover.Move(Versus.Backward).ObstacleFound()},
+                {
+                    'r', rover =>
+                    {
+                        rover.Rotate(Rotation.Right);
+                        return false;
+                    }
+                },
+                {
+                    'l', rover =>
+                    {
+                        rover.Rotate(Rotation.Left);
+                        return false;
+                    }
+                }
+            };
         }
 
         public void ExecuteCommands(string commandString)

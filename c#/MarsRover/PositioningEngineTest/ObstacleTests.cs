@@ -18,8 +18,9 @@ namespace MarsRoverTest
             Coords obstacleCoords = new Coords(checkX, checkY);
             Obstacle obstacle = new Obstacle(obstacleCoords);
             bool result = obstacle.Matches(obstacleCoords);
+			result.Should().BeTrue();
 
-        }
+		}
 
         [Test]
         [TestCase(0, 0)]
