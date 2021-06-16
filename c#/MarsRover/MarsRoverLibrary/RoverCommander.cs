@@ -7,38 +7,47 @@ namespace MarsRover
     public class RoverCommander
     {
         private IRover Rover { get; }
-        private readonly Dictionary<char, Func<IRover, bool>> commands;
+        private readonly Dictionary<char, Func<IRover, MoveResult>> commands;
         public RoverCommander(IRover rover)
         {
             Rover = rover;
-            commands = new Dictionary<char, Func<IRover, bool>>
+            commands = new Dictionary<char, Func<IRover, MoveResult>>
             {
-                {'f', rover => rover.Move(Versus.Forward).ObstacleFound()},
-                {'b', rover => rover.Move(Versus.Backward).ObstacleFound()},
+                {'f', rover => rover.Move(Versus.Forward)},
+                {'b', rover => rover.Move(Versus.Backward)},
                 {
                     'r', rover =>
                     {
                         rover.Rotate(Rotation.Right);
-                        return false;
+                        return new MoveResult();
                     }
                 },
                 {
                     'l', rover =>
                     {
                         rover.Rotate(Rotation.Left);
-                        return false;
+                        return new MoveResult();
                     }
                 }
             };
         }
 
-        public void ExecuteCommands(string commandString)
+        public string ExecuteCommands(string commandString)
         {
+            string retVal = "";
             foreach (var commandChar in commandString)
             {
-                bool obstacleDetected = commands[commandChar](Rover);
-                if (obstacleDetected) break;
+                MoveResult result = commands[commandChar](Rover);
+
+                if (result.ObstacleFound())
+                {
+                    retVal += $"Ops: obstacle at ({result.ObstaclePosition.Value.X}:{result.ObstaclePosition.Value.Y})";
+                    break;
+                }
+
+                retVal += commandChar;
             }
+            return retVal;
 
         }
     }
