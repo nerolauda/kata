@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace MarsRover
 {
@@ -23,15 +24,18 @@ namespace MarsRover
                 return false;
             }
 
-            return Y == other.Y;
+			return Y == other.Y;
         }
 
-        public override int GetHashCode()
-        {
-            return (X << 2) ^ Y;
-        }
+		public override int GetHashCode() => Combine(X, Y);
 
-        public static bool operator ==(Coords coord1, Coords coord2)
+		private int Combine(int h1, int h2)
+		{
+			uint rol5 = ((uint)h1 << 5) | ((uint)h1 >> 27);
+			return ((int)rol5 + h1) ^ h2;
+		}
+
+		public static bool operator ==(Coords coord1, Coords coord2)
         {
             return coord1.Equals(coord2);
         }
