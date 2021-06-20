@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MarsRover
+namespace Space
 {
     public class Obstacle
     {

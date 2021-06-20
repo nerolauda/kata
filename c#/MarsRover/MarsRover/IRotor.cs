@@ -1,4 +1,6 @@
-﻿namespace MarsRover
+﻿using Space;
+
+namespace MarsRover
 {
     public interface IRotor
     {

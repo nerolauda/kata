@@ -1,9 +1,7 @@
 ﻿using FluentAssertions;
-using MarsRover;
 using NUnit.Framework;
+using Space;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MarsRoverTest
 {

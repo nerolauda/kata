@@ -1,4 +1,4 @@
-﻿namespace MarsRover
+﻿namespace Space
 {
     public enum Versus : int
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace MarsRover
+namespace Space
 {
     public readonly struct Coords
     {

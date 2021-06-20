@@ -2,6 +2,7 @@
 using MarsRover;
 using Moq;
 using NUnit.Framework;
+using Space;
 
 namespace MarsRoverTest
 {

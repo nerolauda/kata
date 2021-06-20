@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using MarsRover;
 using NUnit.Framework;
+using Space;
 using System;
 
 
