@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MarsRoverLibrary\MarsRover.csproj" />
+    <ProjectReference Include="..\MarsRover\MarsRover.csproj" />
   </ItemGroup>
 
 </Project>
