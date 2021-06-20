@@ -97,7 +97,7 @@ namespace MarsRoverTest
             Coords maxCoord = new Coords(10, 32);
             var planetGrid = new PlanetGrid(minCoord, maxCoord);
 
-            PlanetGrid result = planetGrid.AddObstacle(obstacleX, obstacleY);
+            IPlanetGrid result = planetGrid.AddObstacle(obstacleX, obstacleY);
             result.Should().Be(planetGrid);
 
         }

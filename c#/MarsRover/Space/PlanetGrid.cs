@@ -49,7 +49,7 @@ namespace Space
             return p;
         }
 
-        public PlanetGrid AddObstacle(int obstacleX, int obstacleY)
+        public IPlanetGrid AddObstacle(int obstacleX, int obstacleY)
         {
             Coords obstacleCoords = new Coords(obstacleX, obstacleY);
             ValidateCoords(obstacleCoords);
