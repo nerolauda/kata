@@ -34,20 +34,20 @@ namespace MarsRover
 
         public string ExecuteCommands(string commandString)
         {
-            string executedCommandsOutput = "";
+            string retVal = "";
             foreach (var commandChar in commandString)
             {
                 MoveResult result = commands[commandChar](Rover);
 
                 if (result.ObstacleFound())
                 {
-                    executedCommandsOutput += $"Ops: obstacle at ({result.ObstaclePosition.Value.X}:{result.ObstaclePosition.Value.Y})";
+                    retVal += $"Ops: obstacle at ({result.ObstaclePosition.Value.X}:{result.ObstaclePosition.Value.Y})";
                     break;
                 }
 
-                executedCommandsOutput += commandChar;
+                retVal += commandChar;
             }
-            return executedCommandsOutput;
+            return retVal;
 
         }
     }

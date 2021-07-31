@@ -7,9 +7,12 @@ namespace Space
 {
     public class PlanetGrid : IPlanetGrid
     {
+
         private Coords MinPos { get; }
         private Coords MaxPos { get; }
         private readonly List<Obstacle> obstacles;
+        private const double radGradRatio = Math.PI / 180.0;
+
 
         public PlanetGrid(Coords minCoord, Coords maxCoord)
         {
@@ -29,7 +32,7 @@ namespace Space
 
         public Coords NextCoords(Coords coords, Direction direction, Versus versus)
         {
-            double radiantAngle = (short)direction * Math.PI / 180.0;
+            double radiantAngle = GetRadiantAngle(direction);
 
             int newX = coords.X + (int)versus * (int)Math.Cos(radiantAngle);
             int newY = coords.Y + (int)versus * (int)Math.Sin(radiantAngle);
@@ -38,6 +41,11 @@ namespace Space
             newY = ApplyPacmManPrinciple(newY, MinPos.Y, MaxPos.Y);
 
             return new Coords(newX, newY);
+        }
+
+        private static double GetRadiantAngle(Direction direction)
+        {
+            return (short)direction * radGradRatio;
         }
 
         private static int ApplyPacmManPrinciple(int p, int minLim, int maxLim)
